@@ -22,8 +22,7 @@ public class EventoServiceImpl implements EventoService {
 
     @Override
     public List<Evento> list() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'list'");
+        return this.eventoRepository.findAll();
     }
 
     @Override

@@ -1,16 +1,27 @@
 // src/models/EventModel.js
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventsPattern from "../event-patterns/EventsPattern";
+import axios from "axios";
 
 export function useEventModel() {
-  const [Eventos, setEventos] = useState(EventsPattern);
+  // const [eventos, setEventos] = useState(EventsPattern);
   const [EventoSelecionado, setEventoSelecionado] = useState(null);
   const [EventosFiltrados, setEventosFiltrados] = useState(EventsPattern);
+  const [eventos, setEventos] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:8080/evento")
+      console.log(response.data)
+      setEventos(response.data)
+    }
+    fetchData()
+  }, [])
 
   const onEventDrop = (data) => {
     const { start, end } = data;
-    const updatedEvents = Eventos.map((event) => {
+    const updatedEvents = eventos.map((event) => {
       if (event.id === data.event.id) {
         return {
           ...event,
@@ -24,17 +35,17 @@ export function useEventModel() {
   };
 
   const handleAdicionar = (novoEvento) => {
-    setEventos([...Eventos, { ...novoEvento, id: Eventos.length + 1 }]);
+    setEventos([...eventos, { ...novoEvento, id: eventos.length + 1 }]);
   };
 
   const handleEventDelete = (eventId) => {
-    const updatedEvents = Eventos.filter((event) => event.id !== eventId);
+    const updatedEvents = eventos.filter((event) => event.id !== eventId);
     setEventos(updatedEvents);
     setEventoSelecionado(null);
   };
 
   const handleEventUpdate = (updatedEvent) => {
-    const updatedEvents = Eventos.map((event) => {
+    const updatedEvents = eventos.map((event) => {
       if (event.id === updatedEvent.id) {
         return updatedEvent;
       }
@@ -49,7 +60,7 @@ export function useEventModel() {
   };
 
   return {
-    Eventos,
+    Eventos: eventos,
     EventoSelecionado,
     EventosFiltrados,
     setEventoSelecionado,

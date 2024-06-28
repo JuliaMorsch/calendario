@@ -1,8 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import {Button, Form, Row, Col, Collapse} from 'react-bootstrap';
 
 function Adicionar ({onAdicionar}){
+    const [eventos, setEventos] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+          const response = await axios.get("http://localhost:8080/eventos")
+          console.log(response)
+        }
+      }, [])
+
     const [NovoEvento, setNovoEvento] = useState({
         title: '',
         start: '', 
