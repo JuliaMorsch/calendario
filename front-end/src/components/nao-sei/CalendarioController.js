@@ -1,6 +1,6 @@
 // src/controllers/CalendarController.js
 
-import { useEventModel } from "../models/EventModel";
+import { useEventModel } from "../nao-sei/EventModel";
 
 export function useCalendarController() {
   const {

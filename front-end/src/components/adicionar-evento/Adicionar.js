@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {Button, Form, Row, Col, Collapse} from 'react-bootstrap';
 
@@ -23,14 +24,21 @@ function Adicionar ({onAdicionar}){
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         if(NovoEvento.title && NovoEvento.start && NovoEvento.end){
             const startDate = new Date(NovoEvento.start);
             const endDate = new Date(NovoEvento.end);
 
+            console.log(NovoEvento)
+
             if(startDate >= endDate){
                 alert("A data de início do evento deve ser anterior à data de término.");
                 return;
+            }
+            try {
+                axios.post("http://localhost:8080/evento", NovoEvento)
+            } catch (error) {
+                
             }
             onAdicionar(NovoEvento);
             setNovoEvento({
@@ -47,7 +55,7 @@ function Adicionar ({onAdicionar}){
     return(
         <div className="adicionar p-3 rounded border border-white" style={{backgroundColor: '#e9ecef', color: '#212529'}}>
             <h3>Adicionar Evento</h3>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit()}>
                 <Form.Group controlId='formBasicTitle'>
                     <Form.Label>Título do Evento</Form.Label>
                     <Form.Control type='text' placeholder="Digite o Título" name="title" value={NovoEvento.title} onChange={handleChange}/>

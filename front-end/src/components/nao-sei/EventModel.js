@@ -1,7 +1,7 @@
 // src/models/EventModel.js
 
 import { useState } from "react";
-import EventsPattern from "../../components/eventosPadrão/EventsPattern";
+import EventsPattern from "../event-patterns/EventsPattern";
 
 export function useEventModel() {
   const [Eventos, setEventos] = useState(EventsPattern);

@@ -1,5 +1,3 @@
-// src/views/Calendario.js
-
 import moment from "moment";
 import React from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
@@ -7,11 +5,11 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Adicionar from "../adicionar-evento/Adicionar";
-import { useCalendarController } from "../controllers/CalendarController";
 import CustomToolbar from "../custom-toolbar/CustomToolbar";
-import EventModal from "../event-modal/EventModal";
+import { useCalendarController } from "../nao-sei/CalendarioController";
 import FiltroAtividades from "../nao-sei/FiltroAtividades";
 import "./Calendario.css";
+import EventModal from "../event-modal/EventModal"
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
