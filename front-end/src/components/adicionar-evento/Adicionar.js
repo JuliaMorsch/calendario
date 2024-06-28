@@ -3,14 +3,6 @@ import React, { useState, useEffect} from "react";
 import {Button, Form, Row, Col, Collapse} from 'react-bootstrap';
 
 function Adicionar ({onAdicionar}){
-    const [eventos, setEventos] = useState([])
-
-    useEffect(() => {
-        const fetchData = async () => {
-          const response = await axios.get("http://localhost:8080/eventos")
-          console.log(response)
-        }
-      }, [])
 
     const [NovoEvento, setNovoEvento] = useState({
         title: '',
@@ -20,35 +12,33 @@ function Adicionar ({onAdicionar}){
         color: '',
         tipo: '',
     });
+
+    //para expandir as opções de campos no Evento
     const [Expanded, setExpanded] = useState(false);
     
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setNovoEvento({...NovoEvento, [name]:value});
-    }
-
     const handleToggleExpanded = (e) => {
         e.stopPropagation();
         setExpanded(!Expanded)
     }
 
+    //gera as atualizações dos campos do evento quando solicitado
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setNovoEvento({...NovoEvento, [name]:value});
+    }
+
+    //salva os eventos
     const handleSubmit = (e) => {
         // e.preventDefault();
         if(NovoEvento.title && NovoEvento.start && NovoEvento.end){
             const startDate = new Date(NovoEvento.start);
             const endDate = new Date(NovoEvento.end);
 
-            console.log(NovoEvento)
-
-            if(startDate >= endDate){
+            if(startDate > endDate){
                 alert("A data de início do evento deve ser anterior à data de término.");
                 return;
             }
-            try {
-                axios.post("http://localhost:8080/evento", NovoEvento)
-            } catch (error) {
-                
-            }
+            
             onAdicionar(NovoEvento);
             setNovoEvento({
                 title: '',
@@ -58,6 +48,17 @@ function Adicionar ({onAdicionar}){
                 color: '',
                 tipo: '',
             })
+
+
+            console.log();
+            
+            try {
+                axios.post("http://localhost:8080/evento", NovoEvento)
+            } catch (error) {
+                
+            }
+
+            console.log();
         }
     }
     

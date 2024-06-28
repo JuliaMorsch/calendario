@@ -6,8 +6,8 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Adicionar from "../adicionar-evento/Adicionar";
 import CustomToolbar from "../custom-toolbar/CustomToolbar";
-import { useCalendarController } from "../nao-sei/CalendarioController";
-import FiltroAtividades from "../nao-sei/FiltroAtividades";
+import { useCalendarController } from "../outros/CalendarioController";
+import FiltroAtividades from "../outros/FiltroAtividades";
 import "./Calendario.css";
 import EventModal from "../event-modal/EventModal"
 

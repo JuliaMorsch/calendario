@@ -24,7 +24,7 @@ const EventModal = ({evento, onClose, onDelete, onUpdate}) => {
 
     const handleEndtDateChange = (e) => {
         const endDate = new Date(e.target.value);
-        if(endDate >= EditedEvent.start){
+        if(endDate > EditedEvent.start){
             setEditedEvent({...EditedEvent, end:endDate});
         }
     };
