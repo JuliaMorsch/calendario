@@ -5,7 +5,6 @@ import EventsPattern from "../event-patterns/EventsPattern";
 import axios from "axios";
 
 export function useEventModel() {
-  // const [eventos, setEventos] = useState(EventsPattern);
   const [EventoSelecionado, setEventoSelecionado] = useState(null);
   const [EventosFiltrados, setEventosFiltrados] = useState(EventsPattern);
   const [eventos, setEventos] = useState([])
@@ -13,7 +12,7 @@ export function useEventModel() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("http://localhost:8080/evento")
-      console.log(response.data)
+      console.log(response)
       setEventos(response.data)
     }
     fetchData()
@@ -38,13 +37,17 @@ export function useEventModel() {
     setEventos([...eventos, { ...novoEvento, id: eventos.length + 1 }]);
   };
 
-  const handleEventDelete = (eventId) => {
+  const handleEventDelete = async (eventId) => {
     const updatedEvents = eventos.filter((event) => event.id !== eventId);
+    const response = await axios.delete(`http://localhost:8080/evento/${eventId}`)
     setEventos(updatedEvents);
     setEventoSelecionado(null);
   };
 
-  const handleEventUpdate = (updatedEvent) => {
+  const handleEventUpdate = async (updatedEvent) => {
+
+    const response = axios.put("http://localhost:8080/evento", updatedEvent)
+    console.log(response)
     const updatedEvents = eventos.map((event) => {
       if (event.id === updatedEvent.id) {
         return updatedEvent;
