@@ -8,7 +8,7 @@ function Adicionar({ onAdicionar }) {
         title: '',
         start: '', 
         end: '',
-        desc: '',
+        descricao: '',
         color: '',
         tipo: '',
     });
@@ -17,7 +17,7 @@ function Adicionar({ onAdicionar }) {
     
     const handleToggleExpanded = (e) => {
         e.stopPropagation();
-        setExpanded(!Expanded);
+        setExpanded(!Expanded); 
     }
 
     const handleChange = (e) => {
@@ -30,6 +30,7 @@ function Adicionar({ onAdicionar }) {
         if (NovoEvento.title && NovoEvento.start && NovoEvento.end) {
             const startDate = new Date(NovoEvento.start);
             const endDate = new Date(NovoEvento.end);
+            console.log(NovoEvento)
 
             if (startDate > endDate) {
                 alert("A data de início do evento deve ser anterior à data de término.");
@@ -41,7 +42,7 @@ function Adicionar({ onAdicionar }) {
                 title: '',
                 start: '', 
                 end: '',
-                desc: '',
+                descricao: '',
                 color: '',
                 tipo: '',
             });
