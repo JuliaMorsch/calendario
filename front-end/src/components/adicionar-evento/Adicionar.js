@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 import {Button, Form, Row, Col, Collapse} from 'react-bootstrap';
 
 function Adicionar ({onAdicionar}){
@@ -8,7 +8,7 @@ function Adicionar ({onAdicionar}){
         title: '',
         start: '', 
         end: '',
-        desc: '',
+        descricao: '',
         color: '',
         tipo: '',
     });
@@ -33,6 +33,7 @@ function Adicionar ({onAdicionar}){
         if(NovoEvento.title && NovoEvento.start && NovoEvento.end){
             const startDate = new Date(NovoEvento.start);
             const endDate = new Date(NovoEvento.end);
+            console.log(NovoEvento)
 
             if(startDate > endDate){
                 alert("A data de início do evento deve ser anterior à data de término.");
@@ -44,7 +45,7 @@ function Adicionar ({onAdicionar}){
                 title: '',
                 start: '', 
                 end: '',
-                desc: '',
+                descricao: '',
                 color: '',
                 tipo: '',
             })
@@ -89,7 +90,7 @@ function Adicionar ({onAdicionar}){
                             <div>
                                 <Form.Group controlId="formBasicDesc">
                                     <Form.Label>Descrição</Form.Label>
-                                    <Form.Control type="text" placeholder="Digite a Descrição" name="desc" value={NovoEvento.desc} onChange={handleChange}></Form.Control>
+                                    <Form.Control type="text" placeholder="Digite a Descrição" name="descricao" value={NovoEvento.descricao} onChange={handleChange}></Form.Control>
                                 </Form.Group>
                             </div>
                             <Row>

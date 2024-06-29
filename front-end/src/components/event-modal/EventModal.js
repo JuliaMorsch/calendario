@@ -34,6 +34,7 @@ const EventModal = ({evento, onClose, onDelete, onUpdate}) => {
     };
 
     const handleUpdate = () => {
+        console.log(EditedEvent)
         onUpdate(EditedEvent);
         onClose();
     };
@@ -57,7 +58,7 @@ const EventModal = ({evento, onClose, onDelete, onUpdate}) => {
                     </Form.Group>
                     <Form.Group controlId='formDesc'>
                         <Form.Label>Descrição</Form.Label>
-                        <Form.Control as='textarea' rows={3} name='desc' value={EditedEvent.desc} onChange={handleInputChange}/>
+                        <Form.Control as='textarea' rows={3} name='descricao' value={EditedEvent.descricao} onChange={handleInputChange}/>
                     </Form.Group>
                     <Collapse in={!Collapsed}>
                         <div>
