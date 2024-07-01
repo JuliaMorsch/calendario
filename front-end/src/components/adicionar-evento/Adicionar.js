@@ -85,7 +85,7 @@ function Adicionar({ onAdicionar }) {
                     <div>
                         <Form.Group controlId="formBasicDesc">
                             <Form.Label>Descrição</Form.Label>
-                            <Form.Control type="text" placeholder="Digite a Descrição" name="desc" value={NovoEvento.desc} onChange={handleChange}></Form.Control>
+                            <Form.Control type="text" placeholder="Digite a Descrição" name="descricao" value={NovoEvento.descricao} onChange={handleChange}></Form.Control>
                         </Form.Group>
                         <Row>
                             <Col xs={3}>

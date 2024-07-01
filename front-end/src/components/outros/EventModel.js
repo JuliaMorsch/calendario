@@ -40,6 +40,7 @@ export function useEventModel() {
   const handleEventDelete = async (eventId) => {
     const updatedEvents = eventos.filter((event) => event.id !== eventId);
     const response = await axios.delete(`http://localhost:8080/evento/${eventId}`)
+    console.log(response);
     setEventos(updatedEvents);
     setEventoSelecionado(null);
   };

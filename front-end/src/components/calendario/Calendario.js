@@ -7,7 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import Adicionar from "../adicionar-evento/Adicionar";
 import CustomToolbar from "../custom-toolbar/CustomToolbar";
 import { useCalendarController } from "../outros/CalendarioController";
-import FiltroAtividades from "../outros/FiltroAtividades";
+import FiltroAtividades from "../filtro-atividades/FiltroAtividades";
 import "./Calendario.css";
 import EventModal from "../event-modal/EventModal"
 

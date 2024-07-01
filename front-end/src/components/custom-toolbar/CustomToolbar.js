@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const CustomToolbar = ({label, onView, onNavigate, views}) => {
 
-    const [ItemText, setItemText] = useState('month');
+    const [ItemText, setItemText] = useState('Mês');
 
     return(
         <div className="toolbar-container">
